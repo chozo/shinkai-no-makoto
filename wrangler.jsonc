@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "shinkai-no-makoto",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-09-11",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "observability": { "enabled": true, "head_sampling_rate": 1 },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/shinkai-no-makoto*",
+      "!/shinkai-no-makoto/assets/*",
+      "!/shinkai-no-makoto/makoto/*"
+    ]
+  },
+  "routes": [
+    { "pattern": "game.chozo.net/shinkai-no-makoto/*", "zone_name": "chozo.net" }
+  ]
+}

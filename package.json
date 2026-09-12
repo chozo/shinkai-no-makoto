@@ -1,0 +1,17 @@
+{
+  "name": "shinkai-no-makoto",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && node scripts/copy-game-entry.mjs",
+    "preview": "vite preview",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.2",
+    "typescript": "^5.8.3",
+    "vite": "^6.2.6",
+    "wrangler": "^4.131.0"
+  }
+}

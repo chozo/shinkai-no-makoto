@@ -1,0 +1,51 @@
+/* Keep the title scene as a bright, open sea before the descent begins. */
+.overlay {
+  background: linear-gradient(180deg, rgba(87, 202, 240, 0.2), rgba(6, 19, 48, 0.28));
+}
+
+.intro {
+  background: rgba(8, 63, 105, 0.8);
+  border-color: #edfbff;
+  box-shadow: 0 12px 32px rgba(2, 52, 90, 0.38);
+}
+
+.game::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 22px;
+  left: 12%;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff7ae;
+  box-shadow: 0 0 0 10px rgba(255, 247, 174, 0.16), 0 0 26px rgba(255, 246, 162, 0.86);
+  pointer-events: none;
+}
+
+.game.diving::before {
+  opacity: 0;
+}
+
+.topbar,
+.caption,
+.overlay,
+.control {
+  z-index: 2;
+}
+
+.sound-toggle {
+  position: absolute;
+  z-index: 3;
+  top: 54px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border: 2px solid rgba(255, 255, 255, 0.82);
+  border-radius: 50%;
+  color: #10324e;
+  background: rgba(222, 249, 255, 0.86);
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 1;
+}
