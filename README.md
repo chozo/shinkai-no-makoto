@@ -4,6 +4,8 @@
 
 公開URL: https://game.chozo.net/shinkai-no-makoto/
 
+ソースコード: https://github.com/chozo/shinkai-no-makoto
+
 ## 遊び方
 
 1. `START DIVE` をタップします。
@@ -29,6 +31,8 @@ https://game.chozo.net/shinkai-no-makoto/?nofish=1
 - 魚の頭側のみを判定する餌の当たり判定
 - 海底で光る目が近づき、クリア時に正体をランダム表示
 - Web Audio APIで合成したBGM・開始／失敗／クリア効果音・ファンファーレ
+- 深度に応じて低音、音域、フィルターが変化するBGM
+- 右上のミュートボタンと端末内への音量設定保存
 - 外部音源や外部画像への依存なし
 - スマホでビューポート全体を使うレイアウトとSVGファビコン
 
@@ -63,6 +67,21 @@ npm run deploy
 
 ゲームは `game.chozo.net/shinkai-no-makoto/*` にルーティングされています。`game.chozo.net` のトップ画面は、このゲームとは別プロジェクトで管理します。
 
+旧Cloudflare Pagesプロジェクトは削除済みです。Pagesではなく、上記のWorkerデプロイを使用してください。
+
+## GitHub
+
+ソースはOrganization `chozo` のリポジトリで管理しています。
+
+```bash
+git status
+git add <更新したファイル>
+git commit -m "変更内容"
+git push
+```
+
+ローカルの `main` ブランチは `origin/main` を追跡しています。pushには、GitHubアカウント `matsudam` がOrganization `chozo` に対して持つ書き込み権限を使用します。
+
 ## 主な構成
 
 ```text
@@ -90,9 +109,11 @@ vite.config.ts         `/shinkai-no-makoto/` 配下へのビルド設定
 - 海底に固定された光る目、接近時のサイズ変化、ヒット演出、ランダムな正体表示を追加。
 - クリア／失敗画面に再挑戦とタイトル画面への導線を追加。
 - Cloudflare DNSの `game.chozo.net` をハブとして設定し、ゲームをパス単位の専用Workerとして公開。
+- 初期に使っていたCloudflare Pagesプロジェクトを廃止し、Workers配信へ一本化。
 - サブパス配信で画像が表示されない問題を、Viteの公開ベースURLを使う形へ修正。
 - スマホでゲームが小さく表示される問題を、viewport設定の追加で修正。
 - 晴天のタイトル画面、光る目のファビコン、Web Audio APIによるBGM・効果音・クリアファンファーレを追加。
+- GitHub Organization `chozo` の `shinkai-no-makoto` リポジトリへ初回コミットをpush。
 
 ## 今後追加しやすい要素
 
