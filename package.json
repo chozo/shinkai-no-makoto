@@ -7,10 +7,12 @@
     "dev": "vite",
     "build": "tsc && vite build && node scripts/copy-game-entry.mjs",
     "preview": "vite preview",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "ogp": "node scripts/ogp/make-ogp.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.20.2",
+    "playwright-core": "^1.64.1",
     "typescript": "^5.8.3",
     "vite": "^6.2.6",
     "wrangler": "^4.131.0"

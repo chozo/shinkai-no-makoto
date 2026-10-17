@@ -57,6 +57,21 @@ npm run dev
 npm run build
 ```
 
+## OGP画像
+
+SNSで共有したときに出る画像 `public/ogp.png`（1200×630）は、次のコマンドで作り直せます。playwright-core とインストール済みの Chrome（ヘッドレス）を使います。
+
+```bash
+npm run ogp
+```
+
+1. Vite の開発サーバーでゲームを縦長の画面で開き、時計と乱数を固定して1コマずつ進めながら潜ります。撮影のときだけ Vite のプラグインで `src/main.ts` の末尾に読み取り用の1行を足し、魚と深さを読めるようにしています（ゲームのコードは変えません）。毎コマ少し先まで魚の動きを予測し、食べられない操作（潜る・止まる・浮上する）を選んでツマミをドラッグします。
+2. 海底の光る目が近づいてきた深さ（8,900 m）で撮り、1200×630 の台紙にタイトル・遊び方・URL・光る目と並べます。
+
+時計と乱数を固定しているので、毎回同じ画像になります。ただし、依存パッケージを入れ直した直後の1回目は、Vite が依存ファイルを準備し直してページを読み込み直すため、場面が変わることがあります。そのときはもう一度実行してください。
+
+`index.html` には `og:*` と `twitter:card` のメタタグがあり、画像とページは絶対URL（`https://game.chozo.net/shinkai-no-makoto/`）を指します。`public/` の `favicon.svg` と `ogp.png` はビルドで `dist/shinkai-no-makoto/` の直下に置かれ、`https://game.chozo.net/shinkai-no-makoto/ogp.png` で取得できます。
+
 ## デプロイ
 
 Cloudflare Workers + Static Assetsで配信しています。
@@ -93,7 +108,11 @@ src/
   overrides.css        晴天演出、ミュートボタンなどの追加スタイル
 public/
   favicon.svg          光る目のファビコン
+  ogp.png              SNS共有用のOGP画像（1200×630）
   makoto/              クリア時に表示する正体画像
+scripts/
+  copy-game-entry.mjs  ビルド後に index.html を play.html としてコピー
+  ogp/make-ogp.mjs     OGP画像の生成（`npm run ogp`）
 wrangler.jsonc         Cloudflare Worker設定
 vite.config.ts         `/shinkai-no-makoto/` 配下へのビルド設定
 ```
@@ -121,7 +140,7 @@ vite.config.ts         `/shinkai-no-makoto/` 配下へのビルド設定
 - 深度別の魚の種類や見た目の追加
 - クリアタイム／到達深度のローカルランキング
 - より本格的なBGM音源への差し替え
-- SNS共有用の結果画像生成
+- SNS共有用の結果画像生成（クリア時の正体や到達深度を載せる画像。ページ共有用のOGP画像はあります）
 
 ## ライセンス
 
