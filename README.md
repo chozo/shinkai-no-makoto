@@ -65,7 +65,7 @@ Cloudflare Workers + Static Assetsで配信しています。
 npm run deploy
 ```
 
-ゲームは `game.chozo.net/shinkai-no-makoto/*` にルーティングされています。`game.chozo.net` のトップ画面は、このゲームとは別プロジェクトで管理します。
+ゲームは `game.chozo.net/shinkai-no-makoto` と `game.chozo.net/shinkai-no-makoto/*` にルーティングされています。`game.chozo.net` のトップ画面は、このゲームとは別プロジェクトで管理します。
 
 旧Cloudflare Pagesプロジェクトは削除済みです。Pagesではなく、上記のWorkerデプロイを使用してください。
 

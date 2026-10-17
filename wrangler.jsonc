@@ -16,6 +16,7 @@
     ]
   },
   "routes": [
+    { "pattern": "game.chozo.net/shinkai-no-makoto", "zone_name": "chozo.net" },
     { "pattern": "game.chozo.net/shinkai-no-makoto/*", "zone_name": "chozo.net" }
   ]
 }
